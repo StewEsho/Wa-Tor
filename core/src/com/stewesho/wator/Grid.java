@@ -35,9 +35,9 @@ public class Grid{
 				//randomly assigns a fish, shark, or water to each tile;
 				//the higher the floats in the inequality statements are, the lower the chances of spawning the animal
 				float tileTypeGen = MathUtils.randomTriangular();
-				if (tileTypeGen < -0.7f) //chances for spawning fish
+				if (tileTypeGen < -0.85f) //chances for spawning fish
 					grid[w][h] = new Fish(w, h);
-				else if (tileTypeGen > 0.75f) //chances for spawning sharks
+				else if (tileTypeGen > 0.875f) //chances for spawning sharks
 					grid[w][h] = new Shark(w, h);
 				else
 					grid[w][h] = new Water(w, h);
