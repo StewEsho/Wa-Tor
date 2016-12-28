@@ -25,4 +25,6 @@ public class Tile{
 
 	public Color getColor(){ return this.color; }
 	public int getColorInt(){ return Color.rgba8888(this.color); }
+	public int getX(){ return this.x; }
+	public int getY(){ return this.y; }
 }

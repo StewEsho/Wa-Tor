@@ -1,6 +1,7 @@
 package com.stewesho.wator;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.Gdx;
 
 /**
 * Tile inhabited by a fish will be stored as an object of this class
@@ -20,7 +21,7 @@ public class Fish extends Tile{
 
 	@Override
 	public void run(){
-
+		
 	}
 
 }

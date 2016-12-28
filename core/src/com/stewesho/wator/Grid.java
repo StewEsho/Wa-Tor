@@ -81,7 +81,7 @@ public class Grid{
 	**/
 	public int getWidth(){ return this.WIDTH; }
 	public int getHeight(){ return this.HEIGHT; }
-	public Tile getTile(int x, int y){ return this.grid[x][y]; }
+	public Tile get(int x, int y){ return this.grid[x][y]; }
 	public Pixmap getPixmap(){ return this.pixmap; }
 	public Tile[][] getGrid(){ return this.grid; }
 }
