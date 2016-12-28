@@ -11,8 +11,8 @@ public class Fish extends Tile{
 	private int timeSinceBreeding; //in chronons/ticks
 	private final int nutritionalValue; //amount of energy the fish provides a shark when eaten
 
-	public Fish(int x, int y){
-		super (x, y, true);
+	public Fish(int x, int y, int width, int height){
+		super (x, y, width, height, true);
 		this.color = new Color(0.250f, 0.886f, 0.392f, 1.000f); //green
 		this.breedingTime = 5;
 		this.timeSinceBreeding = 0;
@@ -21,7 +21,7 @@ public class Fish extends Tile{
 
 	@Override
 	public void run(){
-		
+		updatePosition((x + 1) % this.mapWidth, (y + 1) % this.mapHeight);
 	}
 
 }

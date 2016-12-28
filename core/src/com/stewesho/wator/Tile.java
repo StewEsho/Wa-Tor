@@ -10,18 +10,27 @@ public class Tile{
 
 	protected int x;
 	protected int y;
+	protected int mapWidth;
+	protected int mapHeight;
 	protected boolean isAlive;
 	protected boolean hasMoved; //set to true after run through
 	protected Color color;
 
-	public Tile(int x, int y, boolean isAlive){
+	public Tile(int x, int y, int width, int height, boolean isAlive){
 		this.x = x;
 		this.y = y;
+		this.mapWidth = width;
+		this.mapHeight = height;
 		this.isAlive = isAlive;
 		this.hasMoved = false;
 	}
 
-	public void run(){ /* will be overriden in Shark and Fish */ }
+	protected void run(){ /* will be overriden in Shark and Fish */ }
+
+	protected void updatePosition(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
 
 	public Color getColor(){ return this.color; }
 	public int getColorInt(){ return Color.rgba8888(this.color); }

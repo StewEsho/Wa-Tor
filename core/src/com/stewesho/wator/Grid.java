@@ -43,18 +43,22 @@ public class Grid{
 				//the higher the floats in the inequality statements are, the lower the chances of spawning the animal
 				float tileTypeGen = MathUtils.randomTriangular();
 				if (tileTypeGen < -0.85f){ //chances for spawning fish
-					grid[w][h] = new Fish(w, h);
+					grid[w][h] = new Fish(w, h, this.WIDTH, this.HEIGHT);
 					this.fishList.add(grid[w][h]);
+					Gdx.app.log("Fish", fishList.size + " fishes generated");
 				}
 				else if (tileTypeGen > 0.875f){ //chances for spawning sharks
-					grid[w][h] = new Shark(w, h);
+					grid[w][h] = new Shark(w, h, this.WIDTH, this.HEIGHT);
 					this.sharkList.add(grid[w][h]);
+					Gdx.app.log("Shark", sharkList.size + " sharks generated");
 				}
 				else
-					grid[w][h] = new Water(w, h);
+					grid[w][h] = new Water(w, h, this.WIDTH, this.HEIGHT);
 
 			}
 		}
+		Gdx.app.log("Fish", fishList.size + " fishes generated");
+		Gdx.app.log("Shark", sharkList.size + " sharks generated");
 	}
 
 	public Texture render(){

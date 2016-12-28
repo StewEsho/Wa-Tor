@@ -10,8 +10,8 @@ public class Shark extends Tile{
 	private int timeSinceBreeding; //in chronons/ticks
 	private int energy; //when energy hits 0, the shark dies
 
-	public Shark(int x, int y){
-		super (x, y, true);
+	public Shark(int x, int y, int width, int height){
+		super (x, y, width, height, true);
 		this.color = new Color(0.250f, 0.470f, 0.886f, 1.000f); //blue
 		this.breedingTime = 5;
 		this.timeSinceBreeding = 0;
@@ -20,7 +20,7 @@ public class Shark extends Tile{
 
 	@Override
 	public void run(){
-
+		updatePosition((x + 1) % this.mapWidth, (y + 1) % this.mapHeight);
 	}
 
 }

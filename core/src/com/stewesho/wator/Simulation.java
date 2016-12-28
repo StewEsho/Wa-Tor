@@ -6,6 +6,12 @@ import com.badlogic.gdx.Gdx;
 public class Simulation{
 	//simulates one chronon by iterating through each tile in the ocean
 	public void runChronon(Grid grid){
+		for (Tile s : grid.getSharkList()){
+			s.run();
+		}
 
+		for (Tile f : grid.getFishList()){
+			f.run();
+		}
 	}
 }
