@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 * Base class for the tiles that will occupy the grid of wator
 * Shark and Fish classes derived from this class
 **/
-public abstract class Tile{
+public class Tile{
 
 	protected int x;
 	protected int y;
@@ -19,6 +19,14 @@ public abstract class Tile{
 		this.isAlive = isAlive;
 	}
 
-public void run(){ /* will be overriden in Shark and Fish */ }
+	public void run(){ /* will be overriden in Shark and Fish */ }
+
+	public Color getColor(){
+		if (this.color != null)
+			return this.color;
+		else
+	 		return Color.RED;
+		}
+	public int getColorInt(){ return Color.rgba8888(this.color); }
 
 }
