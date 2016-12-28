@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 public class Fish extends Tile{
 	private int breedingTime; //in chronons/ticks
 	private int timeSinceBreeding; //in chronons/ticks
-	private int final nutritionalValue; //amount of energy the fish provides a shark when eaten
+	private final int nutritionalValue; //amount of energy the fish provides a shark when eaten
 
 	public Fish(int x, int y){
 		super (x, y, true);
