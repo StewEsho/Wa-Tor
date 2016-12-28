@@ -9,14 +9,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class Main extends ApplicationAdapter {
 	SpriteBatch batch;
-	Grid map;
 	OrthographicCamera cam;
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		map = new Grid(1000, 1000);
-		cam = new OrthographicCamera(map.getWidth() * 1.0625f, map.getHeight() * 1.0625f);
+		cam = new OrthographicCamera(50, 50);
 	}
 
 	@Override
@@ -27,7 +25,7 @@ public class Main extends ApplicationAdapter {
 		batch.setProjectionMatrix(cam.combined);
 		batch.begin();
 
-		batch.draw(map.render(), -map.getWidth()/2, -map.getHeight()/2);
+		// batch.draw(map.render(), -map.getWidth()/2, -map.getHeight()/2);
 
 		batch.end();
 	}
@@ -35,6 +33,6 @@ public class Main extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		map.disposeResources();
+		// map.disposeResources();
 	}
 }
