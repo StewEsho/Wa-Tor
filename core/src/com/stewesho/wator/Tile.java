@@ -16,7 +16,7 @@ public class Tile{
 	protected boolean hasMoved; //set to true after run through
 	protected Color color;
 
-	public Tile(int x, int y, int width, int height, boolean isAlive){
+	protected Tile(int x, int y, int width, int height, boolean isAlive){
 		this.x = x;
 		this.y = y;
 		this.mapWidth = width;
