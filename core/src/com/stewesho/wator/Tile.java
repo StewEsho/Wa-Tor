@@ -25,12 +25,12 @@ public class Tile{
 		this.hasMoved = false;
 	}
 
-	protected void run(){ /* will be overriden in Shark and Fish */ }
-
 	protected void updatePosition(int x, int y){
 		this.x = x;
 		this.y = y;
 	}
+
+	protected void run(Grid grid){} //declared in Creature.java
 
 	public Color getColor(){ return this.color; }
 	public int getColorInt(){ return Color.rgba8888(this.color); }

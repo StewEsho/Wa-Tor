@@ -16,8 +16,8 @@ public class Shark extends Creature{
 		this.energy = 5;
 	}
 
-	public void run(){
-		super.run();
+	public void run(Grid grid){
+		super.run(grid);
  	}
 
 }

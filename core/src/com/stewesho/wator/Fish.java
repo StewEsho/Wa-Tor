@@ -17,8 +17,8 @@ public class Fish extends Creature{
 		this.nutritionalValue = 1;
 	}
 
-	public void run(){
-		super.run();
+	public void run(Grid grid){
+		super.run(grid);
 	}
 
 }

@@ -86,6 +86,12 @@ public class Grid{
 		return this.gridTexture;
 	}
 
+	public void swap(int x1, int y1, int x2, int y2){
+		Tile placeholder = this.grid[x1][y1];
+		this.grid[x1][y1] = this.grid[x2][y2];
+		this.grid[x2][y2] = placeholder;
+	}
+
 	public void disposeResources(){
 		this.gridTexture.dispose();
 		this.pixmap.dispose();
