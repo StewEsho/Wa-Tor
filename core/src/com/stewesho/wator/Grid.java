@@ -87,10 +87,27 @@ public class Grid{
 	}
 
 	public void swap(int x1, int y1, int x2, int y2){
-		x1 = x1 % this.WIDTH;
-		y1 = y1 % this.HEIGHT;
-		x2 = x2 % this.WIDTH;
-		y2 = y2 % this.HEIGHT;
+		//tried using modulo and map width; didnt work
+		while (x1 >= this.WIDTH)
+			x1 -= this.WIDTH;
+		if (x1 < 0)
+			x1 += this.WIDTH;
+		///////////////
+		while (y1 >= this.HEIGHT)
+			y1 -= this.HEIGHT;
+		if (y1 < 0)
+			y1 += this.HEIGHT;
+		///////////////
+		while (x2 >= this.WIDTH)
+			x2 -= this.WIDTH;
+		if (x2 < 0)
+			x2 += this.WIDTH;
+		///////////////
+		while (y2 >= this.HEIGHT)
+			y2 -= this.HEIGHT;
+		if (y2 < 0)
+			y2 += this.HEIGHT;
+		///////////////
 		Tile placeholder = this.grid[x1][y1];
 		this.grid[x1][y1] = this.grid[x2][y2];
 		this.grid[x2][y2] = placeholder;
