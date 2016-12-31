@@ -11,6 +11,7 @@ public class Shark extends Creature{
 	public Shark(int x, int y, int width, int height){
 		super(x, y, width, height);
 		this.color = new Color(0.250f, 0.470f, 0.886f, 1.000f); //blue
+		this.name = "Shark";
 		this.breedingTime = 5;
 		this.timeSinceBreeding = 0;
 		this.energy = 5;

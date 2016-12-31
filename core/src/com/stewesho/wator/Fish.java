@@ -12,6 +12,7 @@ public class Fish extends Creature{
 	public Fish(int x, int y, int width, int height){
 		super(x, y, width, height);
 		this.color = new Color(0.250f, 0.886f, 0.392f, 1.000f); //green
+		this.name = "Fish";
 		this.breedingTime = 5;
 		this.timeSinceBreeding = 0;
 		this.nutritionalValue = 1;

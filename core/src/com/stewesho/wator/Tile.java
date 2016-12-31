@@ -15,6 +15,7 @@ public class Tile{
 	protected boolean isAlive;
 	protected boolean hasMoved; //set to true after run through
 	protected Color color;
+	protected String name;
 
 	protected Tile(int x, int y, int width, int height, boolean isAlive){
 		this.x = x;
@@ -25,9 +26,9 @@ public class Tile{
 		this.hasMoved = false;
 	}
 
-	protected void updatePosition(int x, int y){
-		this.x = x;
-		this.y = y;
+	protected void updatePosition(int x, int y, int width, int height){
+		this.x = x % width;
+		this.y = y % height;
 	}
 
 	protected void run(Grid grid){} //declared in Creature.java
@@ -36,4 +37,5 @@ public class Tile{
 	public int getColorInt(){ return Color.rgba8888(this.color); }
 	public int getX(){ return this.x; }
 	public int getY(){ return this.y; }
+	public String getName(){ return this.name; }
 }

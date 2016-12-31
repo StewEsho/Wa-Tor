@@ -87,6 +87,10 @@ public class Grid{
 	}
 
 	public void swap(int x1, int y1, int x2, int y2){
+		x1 = x1 % this.WIDTH;
+		y1 = y1 % this.HEIGHT;
+		x2 = x2 % this.WIDTH;
+		y2 = y2 % this.HEIGHT;
 		Tile placeholder = this.grid[x1][y1];
 		this.grid[x1][y1] = this.grid[x2][y2];
 		this.grid[x2][y2] = placeholder;
@@ -102,7 +106,11 @@ public class Grid{
 	**/
 	public int getWidth(){ return this.WIDTH; }
 	public int getHeight(){ return this.HEIGHT; }
-	public Tile get(int x, int y){ return this.grid[x][y]; }
+	public Tile get(int x, int y){
+		x = MathUtils.clamp(x, 0, this.WIDTH - 1);
+		y = MathUtils.clamp(y, 0, this.HEIGHT - 1);
+		return this.grid[x][y];
+	}
 	public Pixmap getPixmap(){ return this.pixmap; }
 	public Tile[][] getGrid(){ return this.grid; }
 	public Array<Tile> getSharkList(){ return this.sharkList; }
