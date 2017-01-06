@@ -52,9 +52,9 @@ public class Grid{
 					this.sharkList.add(grid[w][h]);
 					Gdx.app.log("Shark", sharkList.size + " sharks generated");
 				}
-				else
+				else{
 					grid[w][h] = new Water(w, h, this.WIDTH, this.HEIGHT);
-
+				}
 			}
 		}
 		Gdx.app.log("Fish", fishList.size + " fishes generated");
@@ -66,7 +66,9 @@ public class Grid{
 		for (int w = 0; w < this.WIDTH; ++w){
 			for (int h = 0; h < this.HEIGHT; ++h){
 				try{
-					this.pixmap.drawPixel(w, h, this.grid[w][h].getColorInt());
+					if (this.grid[w][h] != null){
+						this.pixmap.drawPixel(w, h, this.grid[w][h].getColorInt());
+					}
 				} catch(NullPointerException e){
 					Gdx.app.error("ERROR", "Error creating pixmap", e);
 				}
@@ -111,6 +113,34 @@ public class Grid{
 		Tile placeholder = this.grid[x1][y1];
 		this.grid[x1][y1] = this.grid[x2][y2];
 		this.grid[x2][y2] = placeholder;
+	}
+
+	public int move(int x, int y, int direction){
+		/** DIRECTIONS
+		* 0 - north
+		* 1 - east
+		* 2 - south
+		* 3 - west
+		**/
+		int deltaX = 0;
+		int deltaY = 0;
+		if(direction == 1 || direction == 3) //horizontal
+			deltaX = direction == 1? 1 : -1;
+		else if(direction == 0 || direction == 2) //horizontal
+			deltaY = direction == 0? 1 : -1;
+		else
+			return -1; //failure
+
+		int x2 = (x + deltaX) % this.WIDTH;
+		int y2 = (y + deltaY) % this.HEIGHT;
+		this.grid[x2][y2] = this.grid[x][y];
+		this.grid[x][y] = new Water(x, y, this.WIDTH, this.HEIGHT);
+		try{
+			this.grid[x2][y2].updatePosition(x2, y2);
+		} catch (NullPointerException e){
+			Gdx.app.error("Error updating pos", "(" + x2 + ", " + y2 + ")", e);
+		}
+		return 0; //success
 	}
 
 	public void disposeResources(){

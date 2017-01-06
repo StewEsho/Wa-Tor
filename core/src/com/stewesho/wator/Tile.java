@@ -26,9 +26,9 @@ public class Tile{
 		this.hasMoved = false;
 	}
 
-	protected void updatePosition(int x, int y, int width, int height){
-		this.x = x % width;
-		this.y = y % height;
+	protected void updatePosition(int x, int y){
+		this.x = x;
+		this.y = y;
 	}
 
 	protected void run(Grid grid){} //declared in Creature.java
