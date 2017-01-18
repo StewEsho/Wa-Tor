@@ -1,6 +1,7 @@
 package com.stewesho.wator;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
 
 /**
 * Base class for the tiles that will occupy the grid of wator
@@ -26,9 +27,37 @@ public class Tile{
 		this.hasMoved = false;
 	}
 
+	//EXPLICITLY updates position
 	protected void updatePosition(int x, int y){
 		this.x = x;
 		this.y = y;
+	}
+
+	//IMPLICITLY updates position
+	/**
+	* 0 = north (+1 y)
+	* 1 = east (+1 x)
+	* 2 = south (-1 y)
+	* 3 = west (-1 x)
+	*/
+	protected void updatePosition(int direction, int width, int height){
+		direction = MathUtils.clamp(direction, 0, 3);
+		switch(direction){
+		case 0:
+			this.y += 1;
+			break;
+		case 1:
+			this.x += 1;
+			break;
+		case 2:
+			this.y -= 1;
+			break;
+		case 3:
+			this.x -= 1;
+			break;
+		}
+		this.x = (this.x + width - 1) % width;
+		this.y = (this.y + height - 1) % height;
 	}
 
 	protected void run(Grid grid){} //declared in Creature.java
@@ -38,4 +67,5 @@ public class Tile{
 	public int getX(){ return this.x; }
 	public int getY(){ return this.y; }
 	public String getName(){ return this.name; }
+	public boolean hasMoved(){ return this.hasMoved; }
 }

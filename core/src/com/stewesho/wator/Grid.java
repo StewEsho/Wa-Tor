@@ -133,9 +133,9 @@ public class Grid{
 
 		int x2 = (x + deltaX) % this.WIDTH;
 		int y2 = (y + deltaY) % this.HEIGHT;
-		this.grid[x2][y2] = this.grid[x][y];
-		this.grid[x][y] = new Water(x, y, this.WIDTH, this.HEIGHT);
 		try{
+			this.grid[x2][y2] = this.grid[x][y];
+			this.grid[x][y] = new Water(x, y, this.WIDTH, this.HEIGHT);
 			this.grid[x2][y2].updatePosition(x2, y2);
 		} catch (NullPointerException e){
 			Gdx.app.error("Error updating pos", "(" + x2 + ", " + y2 + ")", e);
@@ -157,6 +157,28 @@ public class Grid{
 		x = MathUtils.clamp(x, 0, this.WIDTH - 1);
 		y = MathUtils.clamp(y, 0, this.HEIGHT - 1);
 		return this.grid[x][y];
+	}
+	//xo and yo are the original units coords,
+	//@return the tile next to (xo, yo), based on direction
+	public Tile get(int xo, int yo, int direction){
+		direction = MathUtils.clamp(direction, 0, 3);
+		switch(direction){
+		case 0:
+			yo += 1;
+			break;
+		case 1:
+			xo += 1;
+			break;
+		case 2:
+			yo -= 1;
+			break;
+		case 3:
+			xo -= 1;
+			break;
+		}
+		xo = (xo + this.WIDTH - 1) % this.WIDTH;
+		yo = (yo + this.HEIGHT - 1) % this.HEIGHT;
+		return this.grid[xo][yo];
 	}
 	public Pixmap getPixmap(){ return this.pixmap; }
 	public Tile[][] getGrid(){ return this.grid; }
