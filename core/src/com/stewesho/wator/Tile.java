@@ -17,6 +17,7 @@ public class Tile{
 	protected boolean hasMoved; //set to true after run through
 	protected Color color;
 	protected String name;
+	protected boolean willBreed;
 
 	protected Tile(int x, int y, int width, int height, boolean isAlive){
 		this.x = x;
@@ -68,4 +69,6 @@ public class Tile{
 	public int getY(){ return this.y; }
 	public String getName(){ return this.name; }
 	public boolean hasMoved(){ return this.hasMoved; }
+	//getters to be overridden in Creature.java
+	public boolean willBreed(){ return false;}
 }

@@ -11,8 +11,12 @@ public class Simulation{
 			int y = s.getY();
 			s.run(grid);
 			grid.getGrid()[s.getX()][s.getY()] = s;
-			if(s.hasMoved())
-				grid.getGrid()[x][y] = new Water(x, y, grid.getWidth(), grid.getHeight());
+			if(s.hasMoved()){
+				if(s.willBreed())
+					grid.getGrid()[x][y] = new Shark(x, y, grid.getWidth(), grid.getHeight());
+				else
+					grid.getGrid()[x][y] = new Water(x, y, grid.getWidth(), grid.getHeight());
+			}
 		}
 
 		for (Tile f : grid.getFishList()){
@@ -20,7 +24,9 @@ public class Simulation{
 			int y = f.getY();
 			f.run(grid);
 			grid.getGrid()[f.getX()][f.getY()] = f;
-			if(f.hasMoved())
+			if(f.willBreed())
+				grid.getGrid()[x][y] = new Fish(x, y, grid.getWidth(), grid.getHeight());
+			else
 				grid.getGrid()[x][y] = new Water(x, y, grid.getWidth(), grid.getHeight());
 		}
 
