@@ -9,9 +9,12 @@ public abstract class Creature extends Tile{
 	protected int timeSinceBreeding; //in chronons/ticks
 	protected int deltaX; //deltaX/Y used to determine directon of movement
 	protected int deltaY;
+	protected int backDir;
+	protected int dir;
 
 	protected Creature(int x, int y, int width, int height){
 		super(x, y, width, height, true);
+		this.backDir = MathUtils.random(4);
 	}
 
 	@Override
@@ -24,10 +27,13 @@ public abstract class Creature extends Tile{
 			this.timeSinceBreeding = 0;
 		}
 
-		int dir = MathUtils.random(4);
+		do{
+			this.dir = MathUtils.random(4);
+		} while (this.dir == this.backDir);
+		this.backDir = (this.dir - 2) % 4;
 		this.hasMoved = false;
-		if(grid.get(this.x, this.y, dir).getName() == "Water"){ //checks if it is empty
-			this.updatePosition(dir, grid.getWidth(), grid.getHeight()); //updates position
+		if(grid.get(this.x, this.y, this.dir).getName() == "Water"){ //checks if it is empty
+			this.updatePosition(this.dir, grid.getWidth(), grid.getHeight()); //updates position
 			this.hasMoved = true;
 		}
 	}
