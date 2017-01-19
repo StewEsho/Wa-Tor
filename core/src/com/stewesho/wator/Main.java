@@ -15,8 +15,8 @@ public class Main extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		world = new WorldManager(40, 40);
-		cam = new OrthographicCamera(50, 50);
+		world = new WorldManager(140, 140);
+		cam = new OrthographicCamera(165, 165);
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 //managers the logic behind each chronon on Wa-Tor's grid
 public class Simulation{
 	//simulates one chronon by iterating through each tile in the ocean
+	//i would use a seperate method for using
 	public void runChronon(Grid grid){
 		for (Tile s : grid.getSharkList()){
 			int x = s.getX();
