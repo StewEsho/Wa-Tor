@@ -53,8 +53,8 @@ public class Tile{
 		} else if(direction == 3){
 		 	this.x += 1;
 		}
-		this.y = (this.y + (height - 1)) % height;
-		this.x = (this.x + (width - 1)) % width;
+		this.y = (this.y + (height)) % height;
+		this.x = (this.x + (width)) % width;
 	}
 
 	protected void run(Grid grid){} //declared in Creature.java
