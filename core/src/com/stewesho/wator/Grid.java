@@ -88,61 +88,6 @@ public class Grid{
 		return this.gridTexture;
 	}
 
-	public void swap(int x1, int y1, int x2, int y2){
-		//tried using modulo and map width; didnt work
-		while (x1 >= this.WIDTH)
-			x1 -= this.WIDTH;
-		if (x1 < 0)
-			x1 += this.WIDTH;
-		///////////////
-		while (y1 >= this.HEIGHT)
-			y1 -= this.HEIGHT;
-		if (y1 < 0)
-			y1 += this.HEIGHT;
-		///////////////
-		while (x2 >= this.WIDTH)
-			x2 -= this.WIDTH;
-		if (x2 < 0)
-			x2 += this.WIDTH;
-		///////////////
-		while (y2 >= this.HEIGHT)
-			y2 -= this.HEIGHT;
-		if (y2 < 0)
-			y2 += this.HEIGHT;
-		///////////////
-		Tile placeholder = this.grid[x1][y1];
-		this.grid[x1][y1] = this.grid[x2][y2];
-		this.grid[x2][y2] = placeholder;
-	}
-
-	public int move(int x, int y, int direction){
-		/** DIRECTIONS
-		* 0 - north
-		* 1 - east
-		* 2 - south
-		* 3 - west
-		**/
-		int deltaX = 0;
-		int deltaY = 0;
-		if(direction == 1 || direction == 3) //horizontal
-			deltaX = direction == 1? 1 : -1;
-		else if(direction == 0 || direction == 2) //horizontal
-			deltaY = direction == 0? 1 : -1;
-		else
-			return -1; //failure
-
-		int x2 = (x + deltaX) % this.WIDTH;
-		int y2 = (y + deltaY) % this.HEIGHT;
-		try{
-			this.grid[x2][y2] = this.grid[x][y];
-			this.grid[x][y] = new Water(x, y, this.WIDTH, this.HEIGHT);
-			this.grid[x2][y2].updatePosition(x2, y2);
-		} catch (NullPointerException e){
-			Gdx.app.error("Error updating pos", "(" + x2 + ", " + y2 + ")", e);
-		}
-		return 0; //success
-	}
-
 	public void disposeResources(){
 		this.gridTexture.dispose();
 		this.pixmap.dispose();

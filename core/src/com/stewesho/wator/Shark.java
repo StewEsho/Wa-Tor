@@ -12,7 +12,7 @@ public class Shark extends Creature{
 		super(x, y, width, height);
 		this.color = new Color(0.250f, 0.470f, 0.886f, 1.000f); //blue
 		this.name = "Shark";
-		this.breedingTime = 5;
+		this.breedingTime = 7;
 		this.timeSinceBreeding = 0;
 		this.energy = 5;
 	}

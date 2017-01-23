@@ -23,7 +23,7 @@ public abstract class Creature extends Tile{
 		this.timeSinceBreeding += 1;
 		this.willBreed = false;
 		if(this.timeSinceBreeding > this.breedingTime){
-			//this.willBreed = true; //uncomment to enable breeding
+			this.willBreed = true; //uncomment to enable breeding
 			this.timeSinceBreeding = 0;
 		}
 

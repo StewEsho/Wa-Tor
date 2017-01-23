@@ -43,15 +43,16 @@ public class Tile{
 	* 3 = west (-1 x)
 	*/
 	protected void updatePosition(int direction, int width, int height){
-		direction = MathUtils.clamp(direction, 0, 3);
-		if(direction == 0){
-			this.y -= 1;
-		} else if(direction == 1){
-		 	this.x -= 1;
-		} else if(direction == 2){
-		 	this.y += 1;
-		} else if(direction == 3){
-		 	this.x += 1;
+		switch(direction){
+			case 0: this.y += 1;
+					break;
+			case 1: this.x += 1;
+					break;
+			case 2: this.y -= 1;
+					break;
+			case 3: this.x -= 1;
+					break;
+			default: break;
 		}
 		this.y = (this.y + (height)) % height;
 		this.x = (this.x + (width)) % width;
